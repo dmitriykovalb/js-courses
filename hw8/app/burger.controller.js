@@ -17,6 +17,7 @@ class BurgerController {
         self._view.renderToppings(toppings, initialBurger.topping);
       })
       this.burgerData();
+      this.listeners();
     }
   
     burgerData() {
@@ -33,5 +34,15 @@ class BurgerController {
           self.burgerData();
         });
       })
+      this._view.listenStuffingChange(function(newStuffingId) {
+        self._model.changeStuffing(newStuffingId, function() {
+          self.burgerData();
+        });
+      })
+      this._view.listenToppingChange(function(newToppingId) {
+        self._model.changeTopping(newToppingId, function() {
+          self.burgerData();
+        });
+      })
     }
-  }
+}

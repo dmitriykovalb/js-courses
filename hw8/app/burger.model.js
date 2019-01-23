@@ -61,7 +61,7 @@ class BurgerModel {
     ]
       this._chosenSize = this._sizes[1].id;
       this._chosenStuffing = this._stuffings[0].id;
-      this._chosenToppings = this._toppings[2].id;
+      this._chosenToppings = this._toppings[1].id;
     }
   
     // get sizes() {
@@ -93,6 +93,21 @@ class BurgerModel {
         cb(burgerData);
       }
       return burgerData;
+    }
+
+    changeSize(sizeId, cb) { 
+       this._chosenSize = sizeId;
+       cb();    
+    }
+
+    changeStuffing(stuffingId, cb) {
+      this._chosenStuffing = stuffingId;
+      cb();
+    }
+
+    changeTopping(toppingId, cb) {
+      this._chosenToppings = toppingId;
+      cb();
     }
   
   }

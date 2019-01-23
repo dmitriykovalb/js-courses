@@ -79,4 +79,26 @@ class BurgerView {
         .replace('{{topping}}', burgerData.topping.name)
       this._selectors.burderData$.html(template);
     }
+
+    listenSizeChange(cb) {
+      this._selectors.sizes$.on('change', '[name="burger_size"]', function() {
+        let id = $(this).val();
+        cb(id)
+      })
+    }
+  
+    listenStuffingChange(cb) {
+      this._selectors.stuffings$.change(function() {
+        let id = $(this).val();
+        cb(id);
+      })
+    }
+
+    listenToppingChange(cb) {
+      this._selectors.toppings$.change(function() {
+        let id = $(this).val();
+        cb(id);
+      })
+    }
+  
   }
